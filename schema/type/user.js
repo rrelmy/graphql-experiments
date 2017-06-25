@@ -1,5 +1,8 @@
-const {GraphQLObjectType, GraphQLNonNull, GraphQLInt, GraphQLString} = require('graphql')
+const {GraphQLObjectType, GraphQLNonNull, GraphQLInt, GraphQLString, GraphQLList} = require('graphql')
 const {GraphQLDateTime} = require('graphql-iso-date')
+const apiKeyType = require('./user_api_key')
+const {resolver} = require('graphql-sequelize')
+const User = require('../../models/user')
 
 module.exports = new GraphQLObjectType({
     name: 'User',
@@ -20,6 +23,11 @@ module.exports = new GraphQLObjectType({
         lastname: {
             type: GraphQLString,
             description: 'The lastname of the user.',
+        },
+        api_keys: {
+            type: new GraphQLList(apiKeyType),
+            description: 'API keys of the user',
+            resolve: resolver(User.ApiKeys)
         },
         updated_at: {
             type: GraphQLDateTime,
