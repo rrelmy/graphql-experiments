@@ -27,6 +27,16 @@ module.exports = new GraphQLObjectType({
         api_keys: {
             type: new GraphQLList(apiKeyType),
             description: 'API keys of the user',
+            args: {
+                key: {
+                    description: 'API key',
+                    type: GraphQLString
+                },
+                id: {
+                    description: 'ID of the API key',
+                    type: GraphQLInt
+                }
+            },
             resolve: resolver(User.ApiKeys)
         },
         updated_at: {
