@@ -8,7 +8,7 @@ const User = sequelize.define('user', {
     lastname: Sequelize.STRING
 })
 
-User.hasMany(UserApiKey, {foreignKey: {allowNull: false}})
+User.ApiKeys = User.hasMany(UserApiKey, {foreignKey: {allowNull: false}})
 
 User.findByApiKey = function (key, callback) {
     UserApiKey.findOne({where: {key}})

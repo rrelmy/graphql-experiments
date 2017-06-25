@@ -18,5 +18,5 @@ module.exports = {
     /**
      * Feature Flags
      */
-    ENABLE_GRAPHIQL: true
+    ENABLE_GRAPHIQL: false
 }

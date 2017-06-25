@@ -1,16 +1,19 @@
-const {graphql, GraphQLNonNull, GraphQLInt} = require('graphql')
 const User = require('../../models/user')
 const {resolver} = require('graphql-sequelize')
 const userType = require('../type/user')
 
 module.exports = {
-    description: 'Get User',
+    description: 'Get current user',
     type: userType,
-    args: {
-        id: {
-            description: 'id of the user',
-            type: new GraphQLNonNull(GraphQLInt)
+    resolve: resolver(User, {
+        before: function(findOptions, args, context, info) {
+            if (!context.user || !context.user.id) {
+                throw new Error("No current user!");
+            }
+            findOptions.where = {
+                id: context.user.id
+            };
+            return findOptions;
         }
-    },
-    resolve: resolver(User)
+    })
 }
