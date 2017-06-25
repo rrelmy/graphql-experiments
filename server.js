@@ -1,9 +1,14 @@
 const config = require('./config')
 const express = require('express')
 const graphqlHTTP = require('express-graphql')
+const morgan = require('morgan');
 
 // init express
 const app = express()
+
+if (config.ENV === 'dev') {
+    app.use(morgan('dev'))
+}
 
 // define schema
 const schema = require('./schema')
