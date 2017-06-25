@@ -1,4 +1,5 @@
 const {GraphQLObjectType, GraphQLNonNull, GraphQLInt, GraphQLString} = require('graphql')
+const {GraphQLDateTime} = require('graphql-iso-date')
 
 module.exports = new GraphQLObjectType({
     name: 'User',
@@ -19,6 +20,14 @@ module.exports = new GraphQLObjectType({
         lastname: {
             type: GraphQLString,
             description: 'The lastname of the user.',
+        },
+        updated_at: {
+            type: GraphQLDateTime,
+            description: 'The last update date of the user.',
+        },
+        created_at: {
+            type: GraphQLDateTime,
+            description: 'The creation date of the user.',
         }
     }
 })

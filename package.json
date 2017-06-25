@@ -20,6 +20,7 @@
     "express": "^4.15.3",
     "express-graphql": "^0.6.6",
     "graphql": "^0.10.3",
+    "graphql-iso-date": "^3.2.0",
     "graphql-relay": "^0.5.2",
     "graphql-sequelize": "^5.3.3",
     "morgan": "^1.8.2",
