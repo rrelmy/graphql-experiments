@@ -6,10 +6,12 @@ require('./models')
 const User = require('./models/user')
 const UserApiKey = require('./models/user_api_key')
 
+const FORCE_SYNC = false;
+
 sequelize
     .query('SET FOREIGN_KEY_CHECKS = 0', null, {raw: true})
     .then(function(results) {
-        return sequelize.sync({force: true}).then(() => {
+        return sequelize.sync({force: FORCE_SYNC}).then(() => {
             console.log('Models synced')
 
             // create dummy user

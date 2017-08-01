@@ -4,8 +4,7 @@
   "description": "Bildschirmarbeiter multipurpose graphQL api",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "sequelize": "sequelize"
+    "start": "nodemon server.js"
   },
   "keywords": [
     "graphql",
