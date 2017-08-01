@@ -2,7 +2,7 @@ const {GraphQLObjectType, GraphQLNonNull, GraphQLInt, GraphQLString, GraphQLBool
 const {GraphQLDateTime} = require('graphql-iso-date')
 const todoItemType = require('./todo_item')
 const {resolver} = require('graphql-sequelize')
-const User = require('../../models/user')
+const TodoList = require('../../models/todo_list')
 
 module.exports = new GraphQLObjectType({
     name: 'TodoList',
@@ -29,7 +29,7 @@ module.exports = new GraphQLObjectType({
                     type: GraphQLBoolean
                 }
             },
-            resolve: resolver(User.ApiKeys)
+            resolve: resolver(TodoList.Items)
         },
         updated_at: {
             type: GraphQLDateTime,
