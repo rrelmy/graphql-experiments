@@ -10,6 +10,11 @@ const User = sequelize.define('user', {
 
 User.ApiKeys = User.hasMany(UserApiKey, {foreignKey: {allowNull: false}})
 
+// work list
+// TODO use addon pattern
+const TodoList = require('./todo_list')
+User.TodoLists = User.hasMany(TodoList, {foreignKey: {allowNull: false}})
+
 User.findByApiKey = function (key, callback) {
     UserApiKey.findOne({where: {key}})
         .then(function (apiKey) {
